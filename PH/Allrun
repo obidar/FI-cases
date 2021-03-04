@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+mpirun -np 4 python runScript.py 2>&1 | tee logOpt.txt

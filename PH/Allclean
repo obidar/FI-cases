@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+rm -r process*
+
+rm -r postProcessing
+
+rm d*
+
+rm ipopt* opt* obj* log* 

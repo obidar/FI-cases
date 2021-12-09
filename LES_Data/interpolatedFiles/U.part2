@@ -1,0 +1,28 @@
+)
+;
+
+boundaryField
+{
+    bottomWall
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+    defaultFaces
+    {
+        type            symmetry;
+    }
+    inlet
+    {
+        type            cyclic;
+    }
+    outlet
+    {
+        type            cyclic;
+    }
+    topWall
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+}

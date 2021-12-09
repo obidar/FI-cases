@@ -1,0 +1,26 @@
+)
+;
+
+boundaryField
+{
+    bottomWall
+    {
+        type            zeroGradient;
+    }
+    defaultFaces
+    {
+        type            symmetry;
+    }
+    inlet
+    {
+        type            cyclic;
+    }
+    outlet
+    {
+        type            cyclic;
+    }
+    topWall
+    {
+        type            zeroGradient;
+    }
+}

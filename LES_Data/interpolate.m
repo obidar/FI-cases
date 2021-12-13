@@ -80,12 +80,25 @@ end
 % hold off; axis equal; 
 % axis([0,9,0,3.1])
 
+% interpolate lower wall pressure
+load pLowerWall.mat; load CxLowerWall.mat; 
+xLES = pLowerWall(:,2);
+pLES = pLowerWall(:,1); 
+Cx = CxLowerWall; 
+[xData, yData] = prepareCurveData( xLES, pLES );
+ft = 'linearinterp';
+[fitresult, gof] = fit( xData, yData, ft, 'Normalize', 'on' );
+pLowerOF = feval(fitresult, Cx); 
+figure; hold on;
+plot(xLES, pLES, 'k-', Cx, feval(fitresult, Cx), 'b--'); 
+legend('LES', 'Interpolated');
 
 %-------------------------------
 % write the openfoam files
 f1 = fopen('UList', 'w');
 f2 = fopen('TauList', 'w');
 f3 = fopen('pList', 'w');
+f4 = fopen('pLowerWall', 'w'); 
 for k = 1:length(Cx)
      if k == length(Cx)
          fprintf(f1, '(%.16d %.16d %.16d)', [U(k,1), U(k,2), U(k,3)]);
@@ -100,3 +113,12 @@ end
 copyfile UList interpolatedFiles
 copyfile pList interpolatedFiles
 copyfile TauList interpolatedFiles
+
+for m = 1:length(Cx)
+    if m == length(Cx)
+        fprintf(f4, '%.16d\n', pLowerOF(m)); 
+    else
+        fprintf(f4, '%.16d', pLowerOF(m)); 
+    end 
+end 
+copyfile pLowerWall interpolatedFiles

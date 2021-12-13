@@ -5,6 +5,7 @@ touch U
 cat U.part1 >> U
 cat UList >> U
 cat U.part2 >> U
+#cp U /home/ob/Documents/GitHub/FI-cases/LES_Data/OFfiles/0
 cp U /home/dafoamuser/mount/PH/CinellaData/OFInterpolateFiles/0
 
 touch Tau
@@ -17,4 +18,6 @@ touch p
 cat p.part1 >> p
 cat pList >> p
 cat p.part2 >> p
-cp p /home/dafoamuser/mount/PH/CinellaData/OFInterpolateFiles/0
+cat p.part3 >> p
+cp p /home/ob/Documents/GitHub/FI-cases/LES_Data/OFfiles/0
+#cp p /home/dafoamuser/mount/PH/CinellaData/OFInterpolateFiles/0

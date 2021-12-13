@@ -1,0 +1,20 @@
+)
+;
+    }
+    topWall
+    {
+        type            zeroGradient;
+    }
+    inlet
+    {
+        type            cyclic;
+    }
+    outlet
+    {
+        type            cyclic;
+    }
+    defaultFaces
+    {
+        type            symmetry;
+    }
+}

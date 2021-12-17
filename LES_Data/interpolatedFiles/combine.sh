@@ -18,6 +18,7 @@ touch p
 cat p.part1 >> p
 cat pList >> p
 cat p.part2 >> p
+cat pLowerWall >> p
 cat p.part3 >> p
 cp p /home/ob/Documents/GitHub/FI-cases/LES_Data/OFfiles/0
 #cp p /home/dafoamuser/mount/PH/CinellaData/OFInterpolateFiles/0

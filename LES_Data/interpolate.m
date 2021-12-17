@@ -84,13 +84,13 @@ end
 load pLowerWall.mat; load CxLowerWall.mat; 
 xLES = pLowerWall(:,2);
 pLES = pLowerWall(:,1); 
-Cx = CxLowerWall; 
+CxLW = CxLowerWall; 
 [xData, yData] = prepareCurveData( xLES, pLES );
 ft = 'linearinterp';
 [fitresult, gof] = fit( xData, yData, ft, 'Normalize', 'on' );
-pLowerOF = feval(fitresult, Cx); 
+pLowerOF = feval(fitresult, CxLW); 
 figure; hold on;
-plot(xLES, pLES, 'k-', Cx, feval(fitresult, Cx), 'b--'); 
+plot(xLES, pLES, 'k-', CxLW, feval(fitresult, CxLW), 'b--'); 
 legend('LES', 'Interpolated');
 
 %-------------------------------
@@ -114,11 +114,11 @@ copyfile UList interpolatedFiles
 copyfile pList interpolatedFiles
 copyfile TauList interpolatedFiles
 
-for m = 1:length(Cx)
-    if m == length(Cx)
-        fprintf(f4, '%.16d\n', pLowerOF(m)); 
-    else
-        fprintf(f4, '%.16d', pLowerOF(m)); 
-    end 
+for m = 1:length(CxLW)
+    %if m == length(Cx)
+    fprintf(f4, '%.16d\n', pLowerOF(m)); 
+    %else
+    %   fprintf(f4, '%.16d', pLowerOF(m)); 
+    %end 
 end 
 copyfile pLowerWall interpolatedFiles

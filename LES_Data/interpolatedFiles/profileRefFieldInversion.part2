@@ -1,0 +1,31 @@
+)
+;
+
+boundaryField
+{
+    bottomWall
+    {
+        type            calculated;
+        value           uniform 1e+16;
+    }
+    defaultFaces
+    {
+        type            symmetry;
+    }
+    inlet
+    {
+        type            cyclic;
+    }
+    outlet
+    {
+        type            cyclic;
+    }
+    topWall
+    {
+        type            calculated;
+        value           uniform 1e+16;
+    }
+}
+
+
+// ************************************************************************* //

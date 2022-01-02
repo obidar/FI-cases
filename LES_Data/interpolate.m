@@ -116,7 +116,7 @@ copyfile TauList interpolatedFiles
 
 for m = 1:length(CxLW)
     %if m == length(Cx)
-    fprintf(f4, '%.16d\n', pLowerOF(m)); 
+    fprintf(f4, '%.16d\n', pLowerOF(m)-46.862998962402340); 
     %else
     %   fprintf(f4, '%.16d', pLowerOF(m)); 
     %end 

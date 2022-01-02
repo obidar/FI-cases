@@ -31,8 +31,8 @@ for i = 1:10
 end 
 hold off; axis equal; 
 
-file = fopen('profileRefFieldInversion.txt', 'w');
-for i=1:length(Cy)
-    fprintf(file, '%.16d\n', profileRefFieldInversion(i)); 
-end 
-fclose(file);
+% file = fopen('profileRefFieldInversion.txt', 'w');
+% for i=1:length(Cy)
+%     fprintf(file, '%.16d\n', profileRefFieldInversion(i)); 
+% end 
+% fclose(file);

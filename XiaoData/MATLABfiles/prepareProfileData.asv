@@ -1,7 +1,7 @@
 clc; clear; close all;
 
 load CMesh.mat; load secondAnchorPoints.mat; anchors = secondAnchorPoints;
-load UbMesh.mat;
+
 %load anchors.mat; 
 
 figure; hold on;
@@ -15,13 +15,13 @@ profileRefFieldInversion = 1e16.*ones(length(Cy), 1);
 
 check = 0;
 
-for i = 1:length(anchors)
-%    data = table2array(readtable(strcat(dataDir, fNamesData{1,i},'.dat')));
-%    yMesh = table2array(readtable(strcat(dataDir, fNamesOF{1,i},'.csv')));
-%    uNormalised = data(:,2); yOF = data(:,1);
-%    [xData, yData] = prepareCurveData(yOF, uNormalised);
-%    ft = 'linearinterp';
-%    [fitresult, gof] = fit( xData, yData, ft, 'Normalize', 'on' );
+for i = 1:10
+    data = table2array(readtable(strcat(dataDir, fNamesData{1,i},'.dat')));
+    yMesh = table2array(readtable(strcat(dataDir, fNamesOF{1,i},'.csv')));
+    uNormalised = data(:,2); yOF = data(:,1);
+    [xData, yData] = prepareCurveData(yOF, uNormalised);
+    ft = 'linearinterp';
+    [fitresult, gof] = fit( xData, yData, ft, 'Normalize', 'on' );
     yRef = anchors(i,2); yUp = yRef + tol; yLow = yRef - tol; 
     xRef = anchors(i,1); xUp = xRef + tol; xLow = xRef - tol;
     for j = 1:length(Cy)
@@ -29,9 +29,8 @@ for i = 1:length(anchors)
         x = Cx(j);
         if (y >= yLow && y <= yUp && x >= xLow && x <= xUp)
             plot(Cx(j), Cy(j), 'kx');
- %           profileRefFieldInversion(j,1) = feval(fitresult, Cy(j)); 
-            profileRefFieldInversion(j,1) = UbMesh(j,1); 
-            check = check + 1;
+            profileRefFieldInversion(j,1) = feval(fitresult, Cy(j)); 
+            check = check + 1
         end
     end 
 end 
